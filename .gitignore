@@ -163,3 +163,8 @@ run/
 /v1_17/build/tmp/shadowJar/MANIFEST.MF
 /v1_18/build/tmp/shadowJar/MANIFEST.MF
 /v1_19/build/tmp/shadowJar/MANIFEST.MF
+
+
+**/build/
+
+.gradle

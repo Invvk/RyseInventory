@@ -38,5 +38,6 @@ public final class RyseInventoryPlugin extends JavaPlugin {
         getLogger().severe("Please use our API which you can find on my Github account.");
         getLogger().severe(" -> https://github.com/Rysefoxx/RyseInventory");
         getLogger().info("");
+
     }
 }

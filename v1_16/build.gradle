@@ -1,3 +1,5 @@
+apply plugin: "maven-publish"
+
 group = 'io.github.rysefoxx.inventory.v1_16'
 description = 'RyseInventory-v1_16'
 
@@ -10,4 +12,12 @@ repositories {
 dependencies {
     implementation project(':api')
     compileOnly 'com.destroystokyo.paper:paper-api:1.16.4-R0.1-SNAPSHOT'
+}
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            from components.java
+        }
+    }
 }

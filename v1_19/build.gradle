@@ -1,3 +1,5 @@
+apply plugin: "maven-publish"
+
 group = 'io.github.rysefoxx.inventory.v1_19'
 description = 'RyseInventory-v1_19'
 
@@ -10,4 +12,12 @@ repositories {
 dependencies {
     implementation project(':api')
     compileOnly 'org.spigotmc:spigot-api:1.19-R0.1-SNAPSHOT'
+}
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            from components.java
+        }
+    }
 }

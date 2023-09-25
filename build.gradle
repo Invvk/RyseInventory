@@ -25,7 +25,7 @@ allprojects {
             options.encoding = 'UTF-8'
         }
     }
-    version = '1.6.5'
+    version = '1.6.6-local'
 }
 
 subprojects {
@@ -47,10 +47,4 @@ subprojects {
 shadowJar {
     archiveClassifier.set("")
     mergeServiceFiles()
-}
-
-nexusStaging {
-    username = NEXUS_USERNAME
-    password = NEXUS_PASSWORD
-    serverUrl = 'https://s01.oss.sonatype.org/service/local/'
 }

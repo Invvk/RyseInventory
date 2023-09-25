@@ -1,3 +1,14 @@
+apply plugin: "maven-publish"
+
 group = 'io.github.rysefoxx.inventory.api'
 version = 'API'
 description = 'API for RyseInventory'
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            from components.java
+            artifactId = "RyseInventory"
+        }
+    }
+}

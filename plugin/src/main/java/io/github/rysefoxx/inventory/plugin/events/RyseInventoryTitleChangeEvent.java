@@ -25,8 +25,6 @@
 
 package io.github.rysefoxx.inventory.plugin.events;
 
-import net.kyori.adventure.text.Component;
-import net.kyori.adventure.text.serializer.legacy.LegacyComponentSerializer;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Cancellable;
 import org.bukkit.event.HandlerList;
@@ -41,13 +39,9 @@ import org.jetbrains.annotations.NotNull;
 public class RyseInventoryTitleChangeEvent extends PlayerEvent implements Cancellable {
 
     private static final HandlerList HANDLERS_LIST = new HandlerList();
-    private static final LegacyComponentSerializer SERIALIZER = LegacyComponentSerializer.builder()
-            .hexColors()
-            .useUnusualXRepeatedCharacterHexFormat()
-            .build();
 
-    private final Component oldTitle;
-    private Component newTitle;
+    private final String oldTitle;
+    private String newTitle;
 
     private boolean isCancelled;
 
@@ -57,7 +51,7 @@ public class RyseInventoryTitleChangeEvent extends PlayerEvent implements Cancel
      * @param oldTitle The old title of the inventory.
      *                 This event is called when the title of the inventory changes.
      */
-    public RyseInventoryTitleChangeEvent(@NotNull Player player, @NotNull Component oldTitle, @NotNull Component newTitle) {
+    public RyseInventoryTitleChangeEvent(@NotNull Player player, @NotNull String oldTitle, @NotNull String newTitle) {
         super(player);
         this.isCancelled = false;
         this.oldTitle = oldTitle;
@@ -86,13 +80,13 @@ public class RyseInventoryTitleChangeEvent extends PlayerEvent implements Cancel
      * @return The previous title of the inventory.
      */
     public @NotNull String getOldTitle() {
-        return SERIALIZER.serialize(this.oldTitle);
+        return this.oldTitle;
     }
 
     /**
      * @return The previous title of the inventory.
      */
-    public @NotNull Component oldTitle() {
+    public @NotNull String oldTitle() {
         return this.oldTitle;
     }
 
@@ -100,13 +94,13 @@ public class RyseInventoryTitleChangeEvent extends PlayerEvent implements Cancel
      * @return The new title of the inventory.
      */
     public @NotNull String getNewTitle() {
-        return SERIALIZER.serialize(this.newTitle);
+        return this.newTitle;
     }
 
     /**
      * @return The new title of the inventory.
      */
-    public @NotNull Component newTitle() {
+    public @NotNull String newTitle() {
         return this.newTitle;
     }
 
@@ -118,19 +112,6 @@ public class RyseInventoryTitleChangeEvent extends PlayerEvent implements Cancel
      *                 If isCancelled is true, the title will not be set.
      */
     public void setNewTitle(@NotNull String newTitle) {
-        if (this.isCancelled) return;
-
-        this.newTitle = Component.text(newTitle);
-    }
-
-    /**
-     * Gives the inventory a new title.
-     *
-     * @param newTitle The new title of the inventory.
-     *                 <p>
-     *                 If isCancelled is true, the title will not be set.
-     */
-    public void setNewTitle(@NotNull Component newTitle) {
         if (this.isCancelled) return;
 
         this.newTitle = newTitle;

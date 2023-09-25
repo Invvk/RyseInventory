@@ -40,7 +40,6 @@ import io.github.rysefoxx.inventory.plugin.pattern.SearchPattern;
 import io.github.rysefoxx.inventory.plugin.util.*;
 import lombok.AccessLevel;
 import lombok.Getter;
-import net.kyori.adventure.text.Component;
 import org.apache.commons.lang3.tuple.ImmutablePair;
 import org.apache.commons.lang3.tuple.Pair;
 import org.bukkit.Bukkit;
@@ -943,15 +942,6 @@ public class InventoryContents {
      * @param newTitle The new title
      */
     public void updateTitle(@NotNull String newTitle) {
-        updateTitle(Component.text(newTitle));
-    }
-
-    /**
-     * With this method you can update the inventory title.
-     *
-     * @param newTitle The new title
-     */
-    public void updateTitle(@NotNull Component newTitle) {
         this.inventory.updateTitle(this.player, newTitle);
     }
 
